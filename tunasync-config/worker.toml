@@ -27,6 +27,7 @@ name = "openeuler"
 provider = "rsync"
 upstream = "rsync://repo.openeuler.openatom.cn/openeuler/"
 # upstream = "rsync://mirrors.tuna.tsinghua.edu.cn/openeuler/"
+rsync_options = [ "--delete-excluded" ]
 # use_ipv6 = false
 interval = 240
 
@@ -621,15 +622,6 @@ upstream = "https://codeberg.org/guix/guix.git"
 size_pattern = "Total size is ([0-9\\.]+[KMGTP]?)"
 
 [[mirrors]]
-name = "libnvidia-container.git"
-provider = "command"
-command = "/tunasync-scripts/git-branch.sh"
-upstream = "https://github.com/NVIDIA/libnvidia-container"
-size_pattern = "Total size is ([0-9\\.]+[KMGTP]?)"
-	[mirrors.env]
-	BRANCH_NAME = "gh-pages"
-
-[[mirrors]]
 name = "manjaro"
 provider = "rsync"
 upstream = "rsync://mirror.yandex.ru/mirrors/manjaro/"
@@ -666,5 +658,14 @@ memory_limit = "256M"
 name = "anthon"
 provider = "rsync"
 upstream = "rsync://mirrors.nju.edu.cn/anthon/"
+rsync_options = [ "--delete-excluded" ]
 interval = 1440
+memory_limit = "256M"
+
+[[mirrors]]
+name = "nodejs-release"
+provider = "rsync"
+upstream = "rsync://unencrypted.nodejs.org/nodejs/release/"
+rsync_options = [ "--delete-excluded" ]
+interval = 60
 memory_limit = "256M"
